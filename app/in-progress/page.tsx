@@ -8,23 +8,25 @@ import { CheckCircle2, Clock, Circle } from "lucide-react"
 
 const projects = [
   {
-    id: "VC-2025-001",
-    name: "Vintage Crewneck",
-    styleCode: "VC-2025-001",
-    progress: 65,
-    dueDate: "Mar 15, 2025",
+    id: "MSS-2025-001",
+    name: "Mohair Striped Sweater",
+    styleCode: "MSS-2025-001",
+    image: "assets/5.png",
+    progress: 70,
+    dueDate: "Mar 12, 2025",
     revenue: 2450,
     status: "On Track",
     stages: [
       { label: "Knitting Complete", status: "complete" },
       { label: "Linking In Progress", status: "progress" },
-      { label: "Washing Pending", status: "pending" },
+      { label: "Finishing Pending", status: "pending" },
     ],
   },
   {
     id: "CD-2025-007",
     name: "Cardigan",
     styleCode: "CD-2025-007",
+    image: "assets/4.png",
     progress: 35,
     dueDate: "Mar 10, 2025",
     revenue: 1890,
@@ -36,9 +38,10 @@ const projects = [
     ],
   },
   {
-    id: "MT-2025-003",
-    name: "4x1 Merino Top",
-    styleCode: "MT-2025-003",
+    id: "AV-2025-003",
+    name: "Argyle Vest",
+    styleCode: "AV-2025-003",
+    image: "assets/2.png",
     progress: 90,
     dueDate: "Mar 20, 2025",
     revenue: 3200,
@@ -50,40 +53,43 @@ const projects = [
     ],
   },
   {
-    id: "VT-2025-012",
-    name: "Vest",
-    styleCode: "VT-2025-012",
-    progress: 45,
+    id: "SC-2025-012",
+    name: "Scarf",
+    styleCode: "SC-2025-012",
+    image: "assets/7.webp",
+    progress: 40,
     dueDate: "Mar 25, 2025",
     revenue: 1650,
     status: "On Track",
     stages: [
       { label: "Knitting Complete", status: "complete" },
-      { label: "Linking Complete", status: "complete" },
-      { label: "Washing In Progress", status: "progress" },
+      { label: "Linking In Progress", status: "progress" },
+      { label: "Washing Pending", status: "pending" },
     ],
   },
   {
-    id: "SC-2025-008",
-    name: "Scarf",
-    styleCode: "SC-2025-008",
-    progress: 15,
+    id: "PL-2025-021",
+    name: "POLO",
+    styleCode: "PL-2025-021",
+    image: "assets/3.png",
+    progress: 25,
     dueDate: "Apr 5, 2025",
-    revenue: 980,
+    revenue: 3850,
     status: "Materials",
     stages: [
-      { label: "Awaiting Materials", status: "progress" },
-      { label: "Knitting Pending", status: "pending" },
+      { label: "Yarn Received", status: "complete" },
+      { label: "Knitting In Progress", status: "progress" },
       { label: "Finishing Pending", status: "pending" },
     ],
   },
   {
-    id: "BN-2025-015",
-    name: "Beanie",
-    styleCode: "BN-2025-015",
-    progress: 75,
+    id: "MT-2025-015",
+    name: "4x1 Merino Top",
+    styleCode: "MT-2025-015",
+    image: "assets/6.JPG",
+    progress: 85,
     dueDate: "Mar 18, 2025",
-    revenue: 1320,
+    revenue: 2780,
     status: "On Track",
     stages: [
       { label: "Knitting Complete", status: "complete" },
@@ -92,12 +98,13 @@ const projects = [
     ],
   },
   {
-    id: "BL-2025-019",
-    name: "Blanket",
-    styleCode: "BL-2025-019",
-    progress: 55,
+    id: "BN-2025-009",
+    name: "Beanie",
+    styleCode: "BN-2025-009",
+    image: "assets/1.png",
+    progress: 60,
     dueDate: "Mar 30, 2025",
-    revenue: 2850,
+    revenue: 1420,
     status: "On Track",
     stages: [
       { label: "Knitting Complete", status: "complete" },
@@ -106,9 +113,10 @@ const projects = [
     ],
   },
   {
-    id: "HD-2025-021",
-    name: "Hoodie",
-    styleCode: "HD-2025-021",
+    id: "MCC-2025-018",
+    name: "Mohair Cropped Cardigan",
+    styleCode: "MCC-2025-018",
+    image: "assets/8.png",
     progress: 20,
     dueDate: "Apr 2, 2025",
     revenue: 2100,
@@ -120,6 +128,7 @@ const projects = [
     ],
   },
 ]
+
 
 export default function InProgressPage() {
   const activeProjects = projects.length
@@ -227,9 +236,16 @@ export default function InProgressPage() {
             {projects.map((project) => (
               <div key={project.id} className="bg-white rounded-lg shadow-sm border border-neutral-200 p-6">
                 <div className="flex items-start justify-between mb-4">
-                  <div className="w-16 h-16 bg-neutral-300 rounded-lg flex items-center justify-center">
-                    <span className="text-xs text-white">Style Image</span>
+                  {/* Style Image */}
+                  <div className="w-16 h-16 rounded-lg overflow-hidden bg-neutral-100 border border-neutral-200">
+                    <img
+                      src={project.image || "/placeholder.png"} // fallback image
+                      alt={project.name || "Style Image"}
+                      className="w-full h-full object-cover"
+                    />
                   </div>
+
+                  {/* Status Badge */}
                   <span className="px-2 py-1 bg-neutral-100 text-neutral-800 text-xs rounded-full">
                     {project.status}
                   </span>

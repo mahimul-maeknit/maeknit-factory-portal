@@ -202,7 +202,7 @@ export default function MetricsPage() {
               <div>
                 <Label className="text-sm text-neutral-600 mb-2">MOQ Brackets</Label>
                 <div className="grid grid-cols-4 gap-2">
-                  {["1-10", "10-25", "25-100", "100-250", "250-500", "500-1,000", "1,000-2,000", "2,000-5,000"].map(
+                  {["1-10 ", "10-25", "25-100", "100-250", "250-500", "500-1,000", "1,000-2,000", "2,000-5,000"].map(
                     (bracket) => (
                       <Input key={bracket} value={bracket} readOnly className="text-center" />
                     ),

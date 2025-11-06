@@ -195,20 +195,32 @@ export default function IncomingProjectDetailPage({ params }: { params: Promise<
               <div className="bg-white rounded-lg shadow-sm border border-neutral-200 p-6">
                 <h3 className="text-lg text-neutral-900 mb-4">Style Images</h3>
                 <div className="space-y-4">
+                  {/* Front View */}
                   <div>
                     <label className="block text-sm text-neutral-600 mb-2">Front View</label>
-                    <div className="w-full h-48 bg-white border-2 border-dashed border-neutral-300 rounded-lg flex items-center justify-center">
-                      <span className="text-neutral-500 text-sm">Front Style Image</span>
+                    <div className="w-full h-48 bg-white border-2 border-dashed border-neutral-300 rounded-lg overflow-hidden">
+                      <img
+                        src="/assets/1.png"
+                        alt="Front View"
+                        className="w-full h-full object-cover"
+                      />
                     </div>
                   </div>
+
+                  {/* Back View */}
                   <div>
                     <label className="block text-sm text-neutral-600 mb-2">Back View</label>
-                    <div className="w-full h-48 bg-white border-2 border-dashed border-neutral-300 rounded-lg flex items-center justify-center">
-                      <span className="text-neutral-500 text-sm">Back Style Image</span>
+                    <div className="w-full h-48 bg-white border-2 border-dashed border-neutral-300 rounded-lg overflow-hidden">
+                      <img
+                        src="/assets/2.png"
+                        alt="Back View"
+                        className="w-full h-full object-cover"
+                      />
                     </div>
                   </div>
                 </div>
               </div>
+
 
               {/* Production Timeline */}
               <div className="bg-white rounded-lg shadow-sm border border-neutral-200 p-6">
