@@ -11,7 +11,7 @@ const projects = [
     id: "MSS-2025-001",
     name: "Mohair Striped Sweater",
     styleCode: "MSS-2025-001",
-    image: "assets/5.png",
+    image: "/assets/5.png",
     progress: 70,
     dueDate: "Mar 12, 2025",
     revenue: 2450,
@@ -26,7 +26,7 @@ const projects = [
     id: "CD-2025-007",
     name: "Cardigan",
     styleCode: "CD-2025-007",
-    image: "assets/4.png",
+    image: "/assets/4.png",
     progress: 35,
     dueDate: "Mar 10, 2025",
     revenue: 1890,
@@ -41,7 +41,7 @@ const projects = [
     id: "AV-2025-003",
     name: "Argyle Vest",
     styleCode: "AV-2025-003",
-    image: "assets/2.png",
+    image: "/assets/2.png",
     progress: 90,
     dueDate: "Mar 20, 2025",
     revenue: 3200,
@@ -56,7 +56,7 @@ const projects = [
     id: "SC-2025-012",
     name: "Scarf",
     styleCode: "SC-2025-012",
-    image: "assets/7.webp",
+    image: "/assets/7.webp",
     progress: 40,
     dueDate: "Mar 25, 2025",
     revenue: 1650,
@@ -71,7 +71,7 @@ const projects = [
     id: "PL-2025-021",
     name: "POLO",
     styleCode: "PL-2025-021",
-    image: "assets/3.png",
+    image: "/assets/3.png",
     progress: 25,
     dueDate: "Apr 5, 2025",
     revenue: 3850,
@@ -86,7 +86,7 @@ const projects = [
     id: "MT-2025-015",
     name: "4x1 Merino Top",
     styleCode: "MT-2025-015",
-    image: "assets/6.JPG",
+    image: "/assets/6.JPG",
     progress: 85,
     dueDate: "Mar 18, 2025",
     revenue: 2780,
@@ -101,7 +101,7 @@ const projects = [
     id: "BN-2025-009",
     name: "Beanie",
     styleCode: "BN-2025-009",
-    image: "assets/1.png",
+    image: "/assets/1.png",
     progress: 60,
     dueDate: "Mar 30, 2025",
     revenue: 1420,
@@ -116,7 +116,7 @@ const projects = [
     id: "MCC-2025-018",
     name: "Mohair Cropped Cardigan",
     styleCode: "MCC-2025-018",
-    image: "assets/8.png",
+    image: "/assets/8.png",
     progress: 20,
     dueDate: "Apr 2, 2025",
     revenue: 2100,
@@ -128,7 +128,6 @@ const projects = [
     ],
   },
 ]
-
 
 export default function InProgressPage() {
   const activeProjects = projects.length
@@ -219,7 +218,7 @@ export default function InProgressPage() {
                       strokeLinecap="round"
                       strokeLinejoin="round"
                       strokeWidth={2}
-                      d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                      d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
                     />
                   </svg>
                 </div>

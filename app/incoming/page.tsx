@@ -14,7 +14,7 @@ const projects = [
     profit: 685,
     sizes: "XS-XL",
     colors: 3,
-    image: 'assets/5.png',
+    image: "/assets/5.png",
   },
   {
     id: "CD-2025-007",
@@ -24,7 +24,7 @@ const projects = [
     profit: 520,
     sizes: "S-XXL",
     colors: 2,
-    image: 'assets/4.png',
+    image: "/assets/4.png",
   },
   {
     id: "AV-2025-003",
@@ -34,7 +34,7 @@ const projects = [
     profit: 890,
     sizes: "One Size",
     colors: 4,
-    image: 'assets/2.png',
+    image: "/assets/2.png",
   },
   {
     id: "SC-2025-012",
@@ -44,7 +44,7 @@ const projects = [
     profit: 465,
     sizes: "S-XL",
     colors: 2,
-    image: 'assets/7.webp',
+    image: "/assets/7.webp",
   },
   {
     id: "PL-2025-021",
@@ -54,7 +54,7 @@ const projects = [
     profit: 1075,
     sizes: "One Size",
     colors: 4,
-    image: 'assets/3.png',
+    image: "/assets/3.png",
   },
   {
     id: "MT-2025-015",
@@ -64,7 +64,7 @@ const projects = [
     profit: 775,
     sizes: "XS-L",
     colors: 5,
-    image: 'assets/6.JPG',
+    image: "/assets/6.JPG",
   },
   {
     id: "BN-2025-009",
@@ -74,7 +74,7 @@ const projects = [
     profit: 395,
     sizes: "One Size",
     colors: 3,
-    image: 'assets/1.png',
+    image: "/assets/1.png",
   },
 
   {
@@ -85,8 +85,7 @@ const projects = [
     profit: 585,
     sizes: "XS-XXL",
     colors: 3,
-    image: 'assets/8.png',
-
+    image: "/assets/8.png",
   },
 ]
 
@@ -112,7 +111,7 @@ export default function IncomingProjectsPage() {
                   {/* Style Image */}
                   <div className="w-16 h-16 rounded-lg overflow-hidden bg-neutral-100 border border-neutral-200">
                     <img
-                      src={project.image || "/placeholder.png"}  // fallback if image missing
+                      src={project.image || "/placeholder.png"} // fallback if image missing
                       alt={project.name}
                       className="w-full h-full object-cover"
                     />
@@ -120,12 +119,8 @@ export default function IncomingProjectsPage() {
 
                   {/* Revenue & Profit */}
                   <div className="text-right">
-                    <span className="text-sm text-neutral-600">
-                      Revenue: ${project.revenue.toLocaleString()}
-                    </span>
-                    <p className="text-xs text-neutral-500">
-                      Profit: ${project.profit.toLocaleString()}
-                    </p>
+                    <span className="text-sm text-neutral-600">Revenue: ${project.revenue.toLocaleString()}</span>
+                    <p className="text-xs text-neutral-500">Profit: ${project.profit.toLocaleString()}</p>
                   </div>
                 </div>
 

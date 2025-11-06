@@ -6,84 +6,427 @@ import { ArrowLeft, Download } from "lucide-react"
 import { Header } from "@/components/header"
 import { Sidebar } from "@/components/sidebar"
 import { Button } from "@/components/ui/button"
+import React from "react"
 
-const materials = [
+const projectDetails: Record<
+  string,
   {
-    name: "Cashmere Yarn - Navy",
-    supplier: "Premium Fibers Ltd | 2/28 NM",
-    quantity: "45 kg",
-    leadTime: "7 days",
-    payment: "Paid",
-    status: "Delivered",
+    name: string
+    styleCode: string
+    materials: Array<{
+      name: string
+      supplier: string
+      quantity: string
+      leadTime: string
+      payment: string
+      status: string
+    }>
+  }
+> = {
+  "MSS-2025-001": {
+    name: "Mohair Striped Sweater",
+    styleCode: "MSS-2025-001",
+    materials: [
+      {
+        name: "Mohair Yarn - Navy Stripe",
+        supplier: "Premium Fibers Ltd | 2/28 NM",
+        quantity: "35 kg",
+        leadTime: "7 days",
+        payment: "Paid",
+        status: "Delivered",
+      },
+      {
+        name: "Mohair Yarn - Cream Stripe",
+        supplier: "Premium Fibers Ltd | 2/28 NM",
+        quantity: "30 kg",
+        leadTime: "5 days",
+        payment: "Paid",
+        status: "Delivered",
+      },
+      {
+        name: "Elastane Thread",
+        supplier: "Stretch Solutions | 70 Denier",
+        quantity: "4 kg",
+        leadTime: "3 days",
+        payment: "Paid",
+        status: "Delivered",
+      },
+      {
+        name: "Care Labels",
+        supplier: "Label Co | Woven Satin",
+        quantity: "800 pcs",
+        leadTime: "3 days",
+        payment: "Paid",
+        status: "Delivered",
+      },
+      {
+        name: "Brand Labels",
+        supplier: "MaeKnit Labels | Woven Cotton",
+        quantity: "800 pcs",
+        leadTime: "2 days",
+        payment: "Paid",
+        status: "Delivered",
+      },
+      {
+        name: "Packaging Materials",
+        supplier: "Eco Pack Solutions | Recycled Poly Bags",
+        quantity: "800 pcs",
+        leadTime: "1 day",
+        payment: "Paid",
+        status: "Delivered",
+      },
+    ],
   },
-  {
-    name: "Cashmere Yarn - Cream",
-    supplier: "Premium Fibers Ltd | 2/28 NM",
-    quantity: "35 kg",
-    leadTime: "5 days",
-    payment: "Paid",
-    status: "In Transit",
+  "CD-2025-007": {
+    name: "Cardigan",
+    styleCode: "CD-2025-007",
+    materials: [
+      {
+        name: "Merino Wool - Charcoal",
+        supplier: "Alpine Yarns | 2/30 NM",
+        quantity: "40 kg",
+        leadTime: "8 days",
+        payment: "Paid",
+        status: "In Transit",
+      },
+      {
+        name: "Buttons - Horn",
+        supplier: "Button Masters | 15mm",
+        quantity: "600 pcs",
+        leadTime: "4 days",
+        payment: "Pending",
+        status: "Pending",
+      },
+      {
+        name: "Care Labels",
+        supplier: "Label Co | Woven Satin",
+        quantity: "900 pcs",
+        leadTime: "3 days",
+        payment: "Paid",
+        status: "Delivered",
+      },
+      {
+        name: "Brand Labels",
+        supplier: "MaeKnit Labels | Woven Cotton",
+        quantity: "900 pcs",
+        leadTime: "2 days",
+        payment: "Paid",
+        status: "Delivered",
+      },
+      {
+        name: "Packaging Materials",
+        supplier: "Eco Pack Solutions | Recycled Poly Bags",
+        quantity: "900 pcs",
+        leadTime: "1 day",
+        payment: "Paid",
+        status: "Delivered",
+      },
+    ],
   },
-  {
-    name: "Cashmere Yarn - Charcoal",
-    supplier: "Premium Fibers Ltd | 2/28 NM",
-    quantity: "40 kg",
-    leadTime: "7 days",
-    payment: "Paid",
-    status: "Delivered",
+  "AV-2025-003": {
+    name: "Argyle Vest",
+    styleCode: "AV-2025-003",
+    materials: [
+      {
+        name: "Cashmere Yarn - Navy",
+        supplier: "Premium Fibers Ltd | 2/28 NM",
+        quantity: "25 kg",
+        leadTime: "7 days",
+        payment: "Paid",
+        status: "Delivered",
+      },
+      {
+        name: "Cashmere Yarn - Burgundy",
+        supplier: "Premium Fibers Ltd | 2/28 NM",
+        quantity: "20 kg",
+        leadTime: "7 days",
+        payment: "Paid",
+        status: "Delivered",
+      },
+      {
+        name: "Cashmere Yarn - Cream",
+        supplier: "Premium Fibers Ltd | 2/28 NM",
+        quantity: "15 kg",
+        leadTime: "5 days",
+        payment: "Paid",
+        status: "Delivered",
+      },
+      {
+        name: "Care Labels",
+        supplier: "Label Co | Woven Satin",
+        quantity: "700 pcs",
+        leadTime: "3 days",
+        payment: "Paid",
+        status: "Delivered",
+      },
+      {
+        name: "Brand Labels",
+        supplier: "MaeKnit Labels | Woven Cotton",
+        quantity: "700 pcs",
+        leadTime: "2 days",
+        payment: "Paid",
+        status: "Delivered",
+      },
+      {
+        name: "Packaging Materials",
+        supplier: "Eco Pack Solutions | Recycled Poly Bags",
+        quantity: "700 pcs",
+        leadTime: "1 day",
+        payment: "Paid",
+        status: "Delivered",
+      },
+    ],
   },
-  {
-    name: "Merino Wool Blend - Heather Grey",
-    supplier: "Alpine Yarns | 2/30 NM",
-    quantity: "25 kg",
-    leadTime: "10 days",
-    payment: "Pending",
-    status: "Pending",
+  "SC-2025-012": {
+    name: "Scarf",
+    styleCode: "SC-2025-012",
+    materials: [
+      {
+        name: "Alpaca Yarn - Grey",
+        supplier: "Alpine Yarns | 2/26 NM",
+        quantity: "20 kg",
+        leadTime: "6 days",
+        payment: "Paid",
+        status: "Delivered",
+      },
+      {
+        name: "Care Labels",
+        supplier: "Label Co | Woven Satin",
+        quantity: "500 pcs",
+        leadTime: "3 days",
+        payment: "Paid",
+        status: "Delivered",
+      },
+      {
+        name: "Brand Labels",
+        supplier: "MaeKnit Labels | Woven Cotton",
+        quantity: "500 pcs",
+        leadTime: "2 days",
+        payment: "Paid",
+        status: "Delivered",
+      },
+      {
+        name: "Packaging Materials",
+        supplier: "Eco Pack Solutions | Recycled Poly Bags",
+        quantity: "500 pcs",
+        leadTime: "1 day",
+        payment: "Paid",
+        status: "Delivered",
+      },
+    ],
   },
-  {
-    name: "Elastane Thread",
-    supplier: "Stretch Solutions | 70 Denier",
-    quantity: "5 kg",
-    leadTime: "3 days",
-    payment: "Paid",
-    status: "Delivered",
+  "PL-2025-021": {
+    name: "POLO",
+    styleCode: "PL-2025-021",
+    materials: [
+      {
+        name: "Cotton Yarn - White",
+        supplier: "Cotton Mills | 2/32 NM",
+        quantity: "50 kg",
+        leadTime: "10 days",
+        payment: "Paid",
+        status: "Delivered",
+      },
+      {
+        name: "Cotton Yarn - Navy",
+        supplier: "Cotton Mills | 2/32 NM",
+        quantity: "45 kg",
+        leadTime: "10 days",
+        payment: "Paid",
+        status: "In Transit",
+      },
+      {
+        name: "Buttons - Plastic",
+        supplier: "Button Masters | 10mm",
+        quantity: "1200 pcs",
+        leadTime: "4 days",
+        payment: "Pending",
+        status: "Pending",
+      },
+      {
+        name: "Care Labels",
+        supplier: "Label Co | Woven Satin",
+        quantity: "1200 pcs",
+        leadTime: "3 days",
+        payment: "Paid",
+        status: "Delivered",
+      },
+      {
+        name: "Brand Labels",
+        supplier: "MaeKnit Labels | Woven Cotton",
+        quantity: "1200 pcs",
+        leadTime: "2 days",
+        payment: "Paid",
+        status: "Delivered",
+      },
+      {
+        name: "Packaging Materials",
+        supplier: "Eco Pack Solutions | Recycled Poly Bags",
+        quantity: "1200 pcs",
+        leadTime: "1 day",
+        payment: "Paid",
+        status: "Delivered",
+      },
+    ],
   },
-  {
-    name: "Care Labels",
-    supplier: "Label Co | Woven Satin",
-    quantity: "1,000 pcs",
-    leadTime: "3 days",
-    payment: "Pending",
-    status: "Pending",
+  "MT-2025-015": {
+    name: "4x1 Merino Top",
+    styleCode: "MT-2025-015",
+    materials: [
+      {
+        name: "Merino Wool - Heather Grey",
+        supplier: "Alpine Yarns | 2/30 NM",
+        quantity: "35 kg",
+        leadTime: "8 days",
+        payment: "Paid",
+        status: "Delivered",
+      },
+      {
+        name: "Elastane Thread",
+        supplier: "Stretch Solutions | 70 Denier",
+        quantity: "3 kg",
+        leadTime: "3 days",
+        payment: "Paid",
+        status: "Delivered",
+      },
+      {
+        name: "Care Labels",
+        supplier: "Label Co | Woven Satin",
+        quantity: "850 pcs",
+        leadTime: "3 days",
+        payment: "Paid",
+        status: "Delivered",
+      },
+      {
+        name: "Brand Labels",
+        supplier: "MaeKnit Labels | Woven Cotton",
+        quantity: "850 pcs",
+        leadTime: "2 days",
+        payment: "Paid",
+        status: "Delivered",
+      },
+      {
+        name: "Packaging Materials",
+        supplier: "Eco Pack Solutions | Recycled Poly Bags",
+        quantity: "850 pcs",
+        leadTime: "1 day",
+        payment: "Paid",
+        status: "Delivered",
+      },
+    ],
   },
-  {
-    name: "Buttons - Mother of Pearl",
-    supplier: "Button Masters | 12mm",
-    quantity: "500 pcs",
-    leadTime: "4 days",
-    payment: "Paid",
-    status: "Delivered",
+  "BN-2025-009": {
+    name: "Beanie",
+    styleCode: "BN-2025-009",
+    materials: [
+      {
+        name: "Wool Blend - Black",
+        supplier: "Alpine Yarns | 2/28 NM",
+        quantity: "15 kg",
+        leadTime: "6 days",
+        payment: "Paid",
+        status: "Delivered",
+      },
+      {
+        name: "Care Labels",
+        supplier: "Label Co | Woven Satin",
+        quantity: "600 pcs",
+        leadTime: "3 days",
+        payment: "Paid",
+        status: "Delivered",
+      },
+      {
+        name: "Brand Labels",
+        supplier: "MaeKnit Labels | Woven Cotton",
+        quantity: "600 pcs",
+        leadTime: "2 days",
+        payment: "Paid",
+        status: "Delivered",
+      },
+      {
+        name: "Packaging Materials",
+        supplier: "Eco Pack Solutions | Recycled Poly Bags",
+        quantity: "600 pcs",
+        leadTime: "1 day",
+        payment: "Paid",
+        status: "Delivered",
+      },
+    ],
   },
-  {
-    name: "Brand Labels",
-    supplier: "MaeKnit Labels | Woven Cotton",
-    quantity: "1,000 pcs",
-    leadTime: "2 days",
-    payment: "Paid",
-    status: "Delivered",
+  "MCC-2025-018": {
+    name: "Mohair Cropped Cardigan",
+    styleCode: "MCC-2025-018",
+    materials: [
+      {
+        name: "Mohair Yarn - Dusty Pink",
+        supplier: "Premium Fibers Ltd | 2/26 NM",
+        quantity: "30 kg",
+        leadTime: "7 days",
+        payment: "Pending",
+        status: "Pending",
+      },
+      {
+        name: "Buttons - Pearl",
+        supplier: "Button Masters | 12mm",
+        quantity: "700 pcs",
+        leadTime: "4 days",
+        payment: "Pending",
+        status: "Pending",
+      },
+      {
+        name: "Care Labels",
+        supplier: "Label Co | Woven Satin",
+        quantity: "800 pcs",
+        leadTime: "3 days",
+        payment: "Pending",
+        status: "Pending",
+      },
+      {
+        name: "Brand Labels",
+        supplier: "MaeKnit Labels | Woven Cotton",
+        quantity: "800 pcs",
+        leadTime: "2 days",
+        payment: "Pending",
+        status: "Pending",
+      },
+      {
+        name: "Packaging Materials",
+        supplier: "Eco Pack Solutions | Recycled Poly Bags",
+        quantity: "800 pcs",
+        leadTime: "1 day",
+        payment: "Pending",
+        status: "Pending",
+      },
+    ],
   },
-  {
-    name: "Packaging Materials",
-    supplier: "Eco Pack Solutions | Recycled Poly Bags",
-    quantity: "1,000 pcs",
-    leadTime: "1 day",
-    payment: "Paid",
-    status: "Delivered",
-  },
-]
+}
 
-export default function InProgressDetailPage({ params }: { params: { id: string } }) {
+export default function InProgressDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const [activeTab, setActiveTab] = useState<"project" | "qc">("project")
+  const unwrappedParams = React.use(params)
+  const { id } = unwrappedParams
+
+  const project = projectDetails[id]
+
+  if (!project) {
+    return (
+      <div className="min-h-screen bg-neutral-50">
+        <Header />
+        <div className="flex">
+          <Sidebar activeItem="in-progress" />
+          <main className="flex-1 p-6">
+            <div className="bg-white rounded-lg border border-neutral-200 p-8 text-center">
+              <h2 className="text-xl text-neutral-900 mb-2">Project Not Found</h2>
+              <p className="text-neutral-600 mb-4">The project with ID {id} could not be found.</p>
+              <Link href="/in-progress">
+                <Button className="bg-neutral-900 text-white hover:bg-neutral-800">Back to In Progress</Button>
+              </Link>
+            </div>
+          </main>
+        </div>
+      </div>
+    )
+  }
 
   return (
     <div className="min-h-screen bg-neutral-50">
@@ -96,7 +439,9 @@ export default function InProgressDetailPage({ params }: { params: { id: string 
               <ArrowLeft className="w-5 h-5" />
             </Link>
             <div>
-              <h1 className="text-2xl text-neutral-900 mb-1">Cashmere Crew Neck - CCN-001</h1>
+              <h1 className="text-2xl text-neutral-900 mb-1">
+                {project.name} - {project.styleCode}
+              </h1>
               <p className="text-neutral-600">Project details and quality control</p>
             </div>
           </div>
@@ -155,7 +500,7 @@ export default function InProgressDetailPage({ params }: { params: { id: string 
                         </div>
                         <div>
                           <h4 className="text-neutral-900 text-sm font-medium">Machine Program</h4>
-                          <p className="text-xs text-neutral-600">CCN-001_Program.stoll</p>
+                          <p className="text-xs text-neutral-600">{project.styleCode}_Program.stoll</p>
                         </div>
                       </div>
                       <Button size="sm" className="bg-neutral-600 text-white hover:bg-neutral-700">
@@ -184,7 +529,7 @@ export default function InProgressDetailPage({ params }: { params: { id: string 
                         </div>
                         <div>
                           <h4 className="text-neutral-900 text-sm font-medium">Calibration</h4>
-                          <p className="text-xs text-neutral-600">CCN-001_Calibration.pdf</p>
+                          <p className="text-xs text-neutral-600">{project.styleCode}_Calibration.pdf</p>
                         </div>
                       </div>
                       <Button size="sm" className="bg-neutral-600 text-white hover:bg-neutral-700">
@@ -213,7 +558,7 @@ export default function InProgressDetailPage({ params }: { params: { id: string 
                         </div>
                         <div>
                           <h4 className="text-neutral-900 text-sm font-medium">CAD Files</h4>
-                          <p className="text-xs text-neutral-600">CCN-001_CAD.zip</p>
+                          <p className="text-xs text-neutral-600">{project.styleCode}_CAD.zip</p>
                         </div>
                       </div>
                       <Button size="sm" className="bg-neutral-600 text-white hover:bg-neutral-700">
@@ -228,7 +573,7 @@ export default function InProgressDetailPage({ params }: { params: { id: string 
               <div className="bg-white rounded-lg border border-neutral-200 p-6">
                 <h3 className="text-lg text-neutral-900 mb-4">Materials & Components</h3>
                 <div className="space-y-4">
-                  {materials.map((material, index) => (
+                  {project.materials.map((material, index) => (
                     <div key={index} className="border border-neutral-200 rounded-lg p-4">
                       <div className="flex justify-between items-start mb-3">
                         <div>
